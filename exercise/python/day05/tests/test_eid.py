@@ -33,6 +33,9 @@ class ElvesSetInMemory:
     def __init__(self) -> None:
         self.elf_register = {}
 
+    def save(self, eid: str, elf_name: str):
+        pass
+
 
 def test_register_when_elf_is_born():
     # GIVEN

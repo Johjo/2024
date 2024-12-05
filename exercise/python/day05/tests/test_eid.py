@@ -20,7 +20,7 @@ import pytest
 # - [x] calculer la clé de contrôle d'un elfe à la naissance
 # - [x] introduire un repository
 # - [x] introduire le décompte des elfes par année
-# - [ ] Mettre l'année sur 4 digits
+# - [.] Mettre l'année sur 4 digits
 # - [x] Sauvegarder l'année de naissance des elfes
 # - [x] Récupérer tous les elfes depuis le repository
 
@@ -88,10 +88,10 @@ class ElfRegister:
 
 
 @pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [
-    (Sex.Sloubi, 84,  "Pipon", "18400108"),
-    (Sex.Sloubi, 85, "Pipou", "18500175"),
-    (Sex.Gagna, 86,  "Pipette", "28600152"),
-    (Sex.Catact, 87, "Pipelette", "38700129"),
+    (Sex.Sloubi, 1984,  "Pipon", "18400108"),
+    (Sex.Sloubi, 1985, "Pipou", "18500175"),
+    (Sex.Gagna, 1986,  "Pipette", "28600152"),
+    (Sex.Catact, 1987, "Pipelette", "38700129"),
 ])
 def test_register_when_elf_is_born(sex: Sex, year_of_birth: int,  name: str, expected_eid, ):
     # GIVEN
@@ -109,11 +109,11 @@ def test_increase_year_counter_when_register_elf():
     # GIVEN
     elves_set = ElvesSetInMemory()
     register_elf = ElfRegister(elves_set=elves_set)
-    register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=84)
-    register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=85)
+    register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984)
+    register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=1985)
 
     # WHEN
-    register_elf.execute(name="Pipounette", sex=Sex.Gagna, year_of_birth=84)
+    register_elf.execute(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
 
     # THEN
     assert elves_set.name_by_eid("28400214") == "Pipounette"

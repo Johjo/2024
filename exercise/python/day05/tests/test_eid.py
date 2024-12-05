@@ -68,7 +68,7 @@ class ElvesSetInMemory:
         return list(self.elf_register.values())
 
     def by_eid(self, eid: str) -> Elf:
-        pass
+        return self.elf_register[eid]
 
 
 class ElfRegister:

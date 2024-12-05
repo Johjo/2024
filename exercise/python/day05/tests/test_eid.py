@@ -53,7 +53,8 @@ class Sex(Enum):
 
 
 class ElfRegister:
-    pass
+    def execute(self):
+        pass
 
 
 @pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [

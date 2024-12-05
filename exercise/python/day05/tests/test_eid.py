@@ -84,8 +84,8 @@ class ElfQuery:
             raise EidNotValid
         return self.elves_set.by_eid(eid)
 
-    def all(self) -> Dict[str, Elf]:
-        pass
+    def all_by_eid(self) -> Dict[str, Elf]:
+        return self.elves_set.all_by_eid()
 
 
 class ElfRegister:
@@ -194,4 +194,4 @@ def test_get_all_elves_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInM
     # WHEN
 
     # THEN
-    assert elf_query.all() == {"xxx": Elf(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984), "yyy": Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)}
+    assert elf_query.all_by_eid() == {"xxx": Elf(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984), "yyy": Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)}

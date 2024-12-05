@@ -45,6 +45,6 @@ def test_register_when_elf_is_born():
     elves_set.save("18400108", "Pipon")
 
     # THEN
-    assert elves_set.elf_register["18400108"] == "Pipon"
+    assert elves_set.name_by_eid("18400108") == "Pipon"
 
 

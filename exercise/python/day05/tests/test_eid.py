@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import Dict
+from typing import Dict, List
 
 import pytest
 
@@ -57,6 +57,10 @@ class ElvesSetInMemory:
 
     def name_by_eid(self, eid: str) -> str:
         return self.elf_register[eid]
+
+    def all(self) -> List[Elf]:
+        pass
+
 
 class Sex(Enum):
     Sloubi = 1

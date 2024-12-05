@@ -79,7 +79,7 @@ class ElfRegister:
 
     def calculate_eid(self, sex, year_of_birth):
         year_count = self._count_elves_by_year(year_of_birth) + 1
-        eid_prefix = sex.value * 100000 + year_of_birth * 1000 + year_count
+        eid_prefix = sex.value * 100000 + (year_of_birth % 100) * 1000 + year_count
         eid = f"{eid_prefix}{str(control_key(eid_prefix)).zfill(2)}"
         return eid
 

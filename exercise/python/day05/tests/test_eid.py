@@ -93,7 +93,7 @@ def test_increase_year_counter_when_register_elf():
     register_elf.execute(name="Pipounette", sex=Sex.Gagna, year_of_birth=84)
 
     # THEN
-    assert elves_set.name_by_eid("00") == "Pipounette"
+    assert elves_set.name_by_eid("28400214") == "Pipounette"
 
 
 

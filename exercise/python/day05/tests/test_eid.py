@@ -67,6 +67,7 @@ class ElvesSetPort(ABC):
     def all_by_eid(self) -> Dict[str, Elf]:
         pass
 
+    @abstractmethod
     def save(self, eid: str, elf: Elf):
         pass
 

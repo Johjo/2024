@@ -10,7 +10,7 @@ import pytest
 # - [x] calculer à la main l'identifiant d'un premier elfe né en 1984 de sexe Sloubi -> 18400108
 # - [x] créer une fonction permettant de calculer le complément d'un elfe
 # - [x] identifier un elfe via son EID
-# - [ ] lister tous les elfes par nom et EID
+# - [.] lister tous les elfes par nom et EID
 # - [x] dire si un EID n'est pas valide pour un elfe
 # - [x] dire si un elfe n'existe pas pour un EID valide donné
 # - [x] pouvoir enregistrer l'année de naissance d'un elf

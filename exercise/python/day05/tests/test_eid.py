@@ -49,7 +49,8 @@ def test_register_when_elf_is_born(eid_prefix: str, name: str, expected_eid, ):
     elves_set = ElvesSetInMemory()
 
     # WHEN
-    elves_set.save(expected_eid, name)
+    eid = eid_prefix + control_key(eid_prefix)
+    elves_set.save(eid, name)
 
     # THEN
     assert elves_set.name_by_eid(expected_eid) == name

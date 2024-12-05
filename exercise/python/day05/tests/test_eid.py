@@ -76,7 +76,7 @@ class ElfRegister:
             year_count = 1
         eid_prefix = sex.value * 100000 + year_of_birth * 1000 + year_count
         eid = f"{eid_prefix}{str(control_key(eid_prefix)).zfill(2)}"
-        self.elves_set.save(eid, name)
+        self.elves_set.save(eid, Elf(name=name))
 
 
 @pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [

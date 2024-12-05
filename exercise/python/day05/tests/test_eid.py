@@ -49,8 +49,8 @@ class ElvesSetInMemory:
     def __init__(self) -> None:
         self.elf_register : Dict[str, str] = {}
 
-    def save(self, eid: str, elf_name: Elf):
-        self.elf_register[eid] = elf_name
+    def save(self, eid: str, elf: Elf):
+        self.elf_register[eid] = elf.name
 
     def name_by_eid(self, eid: str) -> str:
         return self.elf_register[eid]

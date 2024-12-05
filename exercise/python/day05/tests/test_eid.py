@@ -21,7 +21,9 @@ import pytest
 # - [x] introduire un repository
 # - [ ] introduire le décompte des elfes par année
 # - [ ] Mettre l'année sur 4 digits
-# - [.] Sauvegarder l'année des elfes
+# - [x] Sauvegarder l'année des elfes
+# - [.] Récupérer tous les elfes depuis le repository
+
 
 
 
@@ -43,6 +45,7 @@ def test_control_key(eid_prefix, expected_key):
 @dataclass(frozen=True)
 class Elf:
     name: str
+    year_of_birth: int
 
 
 class ElvesSetInMemory:

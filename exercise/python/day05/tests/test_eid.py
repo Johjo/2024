@@ -13,6 +13,6 @@ import pytest
 
 
 
-def test_eid():
-    assert "a" == "a"
+def test_control_key():
+    assert control_key(198007) == 67
 

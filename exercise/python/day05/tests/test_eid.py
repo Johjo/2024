@@ -1,3 +1,4 @@
+from abc import ABC
 from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List
@@ -78,6 +79,10 @@ class ElvesSetInMemory:
 
     def all_by_eid(self) -> Dict[str, Elf]:
         return {**self.elf_register}
+
+
+class ElvesSetPort(ABC):
+    pass
 
 
 class ElfQuery:

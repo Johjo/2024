@@ -84,6 +84,9 @@ class ElfQuery:
             raise EidNotValid
         return self.elves_set.by_eid(eid)
 
+    def all(self) -> Dict[str, Elf]:
+        pass
+
 
 class ElfRegister:
     def __init__(self, elves_set: ElvesSetInMemory):
@@ -183,7 +186,7 @@ def test_tell_when_eid_is_not_valid(elf_query: ElfQuery):
         elf_query.by_id("10000000")
 
 
-def test_get_all_elves_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory, elf_query: ElfQuery, eid: str, expected_elf:Elf):
+def test_get_all_elves_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory, elf_query: ElfQuery):
     # GIVEN
     register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984)
     register_elf.execute(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)

@@ -58,7 +58,17 @@ class Elf:
     year_of_birth: int
 
 
-class ElvesSetInMemory:
+class ElvesSetPort(ABC):
+    @abstractmethod
+    def by_eid(self, eid: str) -> Elf:
+        pass
+
+    @abstractmethod
+    def all_by_eid(self) -> Dict[str, Elf]:
+        pass
+
+
+class ElvesSetInMemory(ElvesSetPort):
     def __init__(self) -> None:
         self.elf_register : Dict[str, Elf] = {}
 
@@ -81,14 +91,6 @@ class ElvesSetInMemory:
         return {**self.elf_register}
 
 
-class ElvesSetPort(ABC):
-    @abstractmethod
-    def by_eid(self, eid: str) -> Elf:
-        pass
-
-    @abstractmethod
-    def all_by_eid(self) -> Dict[str, Elf]:
-        pass
 
 
 class ElfQuery:

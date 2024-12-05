@@ -16,7 +16,8 @@ def control_key(eid_prefix: int) -> int:
     return 97 - (eid_prefix % 97)
 
 @pytest.mark.parametrize("eid_prefix, expected_key", [
-    (198007, 67)
+    (198007, 67),
+    (184001, 00),
 ])
 def test_control_key(eid_prefix, expected_key):
     assert control_key(eid_prefix) == expected_key

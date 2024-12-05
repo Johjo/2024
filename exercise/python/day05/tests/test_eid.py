@@ -25,6 +25,7 @@ import pytest
 # - [x] Récupérer tous les elfes depuis le repository
 # - [x] Bug : on ne récupère pas les elfes par leur eid. Il est codé en dur
 # - [.] Introduire une notion de Port
+# - [ ] Organiser les fichiers
 
 
 

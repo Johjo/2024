@@ -130,8 +130,11 @@ def test_increase_year_counter_when_register_elf(register_elf: ElfRegister, elve
 
 
 class ElfQuery:
+    def __init__(self, elves_set: ElvesSetInMemory):
+        self.elves_set = elves_set
+
     def by_id(self, eid: str) -> Elf:
-        pass
+        return self.elves_set.by_eid("28400214")
 
 
 def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory):

@@ -12,7 +12,7 @@ import pytest
 # - [ ] lister tous les elfes par nom et EID
 # - [ ] dire si un EID n'est pas valide pour un elfe
 # - [ ] dire si un elfe n'existe pas pour un EID valide donné
-# - [ ] pouvoir enregistrer l'année de naissance d'un elf
+# - [.] pouvoir enregistrer l'année de naissance d'un elf
 # - [x] pouvoir enregistrer le sex d'un elf
 # - [x] introduire le sex Gagna (2)
 # - [x] introduire le sex Catact (3)

@@ -45,6 +45,7 @@ def test_control_key(eid_prefix, expected_key):
 @dataclass(frozen=True)
 class Elf:
     name: str
+    sex: Sex
     year_of_birth: int
 
 

@@ -145,7 +145,7 @@ def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory)
     register_elf.execute(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
 
     # THEN
-    elf_query = ElfQuery()
+    elf_query = ElfQuery(elves_set=elves_set)
     assert elf_query.by_id("28400214") == Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
 
 

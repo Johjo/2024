@@ -11,7 +11,7 @@ import pytest
 # - [x] créer une fonction permettant de calculer le complément d'un elfe
 # - [x] identifier un elfe via son EID
 # - [ ] lister tous les elfes par nom et EID
-# - [.] dire si un EID n'est pas valide pour un elfe
+# - [x] dire si un EID n'est pas valide pour un elfe
 # - [x] dire si un elfe n'existe pas pour un EID valide donné
 # - [x] pouvoir enregistrer l'année de naissance d'un elf
 # - [x] pouvoir enregistrer le sex d'un elf
@@ -23,7 +23,7 @@ import pytest
 # - [x] Mettre l'année sur 4 digits
 # - [x] Sauvegarder l'année de naissance des elfes
 # - [x] Récupérer tous les elfes depuis le repository
-# - [ ] Bug : on ne récupère pas les elfes par leur eid. Il est codé en dur
+# - [.] Bug : on ne récupère pas les elfes par leur eid. Il est codé en dur
 
 
 

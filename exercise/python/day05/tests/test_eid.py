@@ -74,6 +74,9 @@ class ElvesSetInMemory:
         except KeyError:
             raise ElfDoesNotExist()
 
+    def all_by_eid(self) -> Dict[str, Elf]:
+        return {**self.elf_register}
+
 
 class ElfQuery:
     def __init__(self, elves_set: ElvesSetInMemory):
@@ -194,4 +197,4 @@ def test_get_all_elves_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInM
     # WHEN
 
     # THEN
-    assert elf_query.all_by_eid() == {"xxx": Elf(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984), "yyy": Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)}
+    assert elf_query.all_by_eid() == {"18400108": Elf(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984), "28400214": Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)}

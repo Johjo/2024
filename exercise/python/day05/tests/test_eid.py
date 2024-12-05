@@ -23,7 +23,7 @@ import pytest
 # - [x] Mettre l'année sur 4 digits
 # - [x] Sauvegarder l'année de naissance des elfes
 # - [x] Récupérer tous les elfes depuis le repository
-# - [.] Bug : on ne récupère pas les elfes par leur eid. Il est codé en dur
+# - [x] Bug : on ne récupère pas les elfes par leur eid. Il est codé en dur
 
 
 
@@ -182,3 +182,13 @@ def test_tell_when_eid_is_not_valid(elf_query: ElfQuery):
     with pytest.raises(EidNotValid):
         elf_query.by_id("10000000")
 
+
+def test_get_all_elves_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory, elf_query: ElfQuery, eid: str, expected_elf:Elf):
+    # GIVEN
+    register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984)
+    register_elf.execute(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
+
+    # WHEN
+
+    # THEN
+    assert elf_query.all() == {"xxx": Elf(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984), "yyy": Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)}

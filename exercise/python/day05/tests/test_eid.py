@@ -61,9 +61,11 @@ class ElfRegister:
 
     def execute(self, sex: Sex, year_of_birth: int,  name: str):
         if name == "Pipounette":
-            eid_prefix = sex.value * 100000 + year_of_birth * 1000 + 2
+            year_count = 2
+            eid_prefix = sex.value * 100000 + year_of_birth * 1000 + year_count
         else:
-            eid_prefix = sex.value * 100000 + year_of_birth * 1000 + 1
+            year_count = 1
+            eid_prefix = sex.value * 100000 + year_of_birth * 1000 + year_count
         eid = f"{eid_prefix}{str(control_key(eid_prefix)).zfill(2)}"
         self.elves_set.save(eid, name)
 

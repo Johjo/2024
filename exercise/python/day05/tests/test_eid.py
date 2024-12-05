@@ -51,6 +51,11 @@ class Sex(Enum):
     Gagna = 2
     Catact = 3
 
+
+class ElfRegister:
+    pass
+
+
 @pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [
     (Sex.Sloubi, 84,  "Pipon", "18400108"),
     (Sex.Sloubi, 85, "Pipou", "18500175"),

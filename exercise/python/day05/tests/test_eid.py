@@ -75,7 +75,7 @@ class ElfRegister:
     def execute(self, sex: Sex, year_of_birth: int,  name: str):
         all_elves = self.elves_set.all()
         if name == "Pipounette":
-            year_count = 2
+            year_count = len(all_elves) + 1
         else:
             year_count = 1
         eid_prefix = sex.value * 100000 + year_of_birth * 1000 + year_count

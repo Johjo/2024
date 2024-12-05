@@ -13,7 +13,7 @@ import pytest
 
 
 def control_key(eid_prefix: int) -> int:
-    return 97 - 30
+    return 97 - (eid_prefix % 97)
 
 
 def test_control_key():

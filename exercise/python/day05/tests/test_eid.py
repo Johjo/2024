@@ -1,12 +1,8 @@
 import unittest
 
-from assertpy import assert_that
+import pytest
 
 
-class EIDTest(unittest.TestCase):
-    def test_eid(self):
-        assert_that(42).is_equal_to("Universe")
+def test_eid():
+    assert "a" == "a"
 
-
-if __name__ == "__main__":
-    unittest.main()

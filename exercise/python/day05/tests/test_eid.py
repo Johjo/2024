@@ -42,6 +42,11 @@ def control_key(eid_prefix: int) -> int:
 def test_control_key(eid_prefix, expected_key):
     assert control_key(eid_prefix) == expected_key
 
+class Sex(Enum):
+    Sloubi = 1
+    Gagna = 2
+    Catact = 3
+
 @dataclass(frozen=True)
 class Elf:
     name: str
@@ -66,12 +71,6 @@ class ElvesSetInMemory:
         pass
 
 
-class Sex(Enum):
-    Sloubi = 1
-    Gagna = 2
-    Catact = 3
-
-
 class ElfRegister:
     def __init__(self, elves_set: ElvesSetInMemory):
         self.elves_set = elves_set
@@ -79,7 +78,7 @@ class ElfRegister:
     def execute(self, sex: Sex, year_of_birth: int,  name: str):
         self.elves_set.save(
                     eid=self.calculate_eid(sex, year_of_birth),
-                    elf=Elf(name=name, year_of_birth=year_of_birth))
+                    elf=Elf(name=name, sex=sex, year_of_birth=year_of_birth))
 
     def calculate_eid(self, sex, year_of_birth):
         year_count = self._count_elves_by_year(year_of_birth) + 1

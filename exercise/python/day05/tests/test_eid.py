@@ -24,6 +24,7 @@ def test_control_key(eid_prefix, expected_key):
 
 
 def test_register_when_elf_is_born():
+    elf_register = {}
     assert elf_register["18400108"] == "Pipon"
 
 

@@ -33,7 +33,7 @@ def control_key(eid_prefix: int) -> int:
     (185001, 75),
     (286001, 52),
     (387001, 29),
-    (284002, 29),
+    (284002, 14),
 ])
 def test_control_key(eid_prefix, expected_key):
     assert control_key(eid_prefix) == expected_key

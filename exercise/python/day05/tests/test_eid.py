@@ -129,6 +129,10 @@ def test_increase_year_counter_when_register_elf(register_elf: ElfRegister, elve
     assert elves_set.name_by_eid("28400214") == "Pipounette"
 
 
+class ElfQuery:
+    pass
+
+
 def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory):
     # GIVEN
     register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984)

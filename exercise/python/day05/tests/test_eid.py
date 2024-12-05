@@ -33,7 +33,6 @@ class ElvesSetInMemory:
 def test_register_when_elf_is_born():
     # GIVEN
     elves_set = ElvesSetInMemory()
-    elves_set.elf_register = {}
 
     # WHEN
     elves_set.elf_register["18400108"] = "Pipon"

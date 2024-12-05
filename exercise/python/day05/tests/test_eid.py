@@ -15,6 +15,7 @@ import pytest
 # - [ ] pouvoir enregistrer l'année de naissance d'un elf
 # - [x] pouvoir enregistrer le sex d'un elf
 # - [x] introduire le sex Gagna (2)
+# - [.] introduire le sex Catact (3)
 # - [x] calculer la clé de contrôle d'un elfe à la naissance
 # - [x] introduire un repository
 

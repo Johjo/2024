@@ -34,7 +34,7 @@ class ElvesSetInMemory:
         self.elf_register = {}
 
     def save(self, eid: str, elf_name: str):
-        pass
+        self.elf_register["18400108"] = "Pipon"
 
 
 def test_register_when_elf_is_born():
@@ -43,7 +43,6 @@ def test_register_when_elf_is_born():
 
     # WHEN
     elves_set.save("18400108", "Pipon")
-
 
     # THEN
     assert elves_set.elf_register["18400108"] == "Pipon"

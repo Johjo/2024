@@ -27,7 +27,8 @@ def test_control_key(eid_prefix, expected_key):
 
 
 class ElvesSetInMemory:
-    pass
+    def __init__(self) -> None:
+        self.elf_register = {}
 
 
 def test_register_when_elf_is_born():

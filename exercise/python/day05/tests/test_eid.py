@@ -148,13 +148,18 @@ def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory)
     elf_query = ElfQuery(elves_set=elves_set)
     assert elf_query.by_id("28400214") == Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
 
+
+class ElfDoesNotExist(Exception):
+    pass
+
+
 def test_tell_when_elf_does_not_exist(register_elf: ElfRegister, elves_set : ElvesSetInMemory):
     # GIVEN
 
     # WHEN
 
     # THEN
-    with pytest.raises(ElfDoesNotExist(eid="28400214")):
+    with pytest.raises(ElfDoesNotExist):
         elf_query = ElfQuery(elves_set=elves_set)
         assert elf_query.by_id("28400214") == Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
 

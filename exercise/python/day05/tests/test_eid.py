@@ -23,6 +23,7 @@ import pytest
 # - [x] Mettre l'année sur 4 digits
 # - [x] Sauvegarder l'année de naissance des elfes
 # - [x] Récupérer tous les elfes depuis le repository
+# - [ ] Bug : on ne récupère pas les elfes par leur eid. Il est codé en dur
 
 
 
@@ -79,6 +80,8 @@ class ElfQuery:
         self.elves_set = elves_set
 
     def by_id(self, eid: str) -> Elf:
+        if control_key(int(eid) // 100) != int(eid) % 100:
+            raise EidNotValid
         return self.elves_set.by_eid("28400214")
 
 

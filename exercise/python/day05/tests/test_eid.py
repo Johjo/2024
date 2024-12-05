@@ -13,7 +13,7 @@ from attr import dataclass
 # - [ ] dire si un EID n'est pas valide pour un elfe
 # - [ ] dire si un elfe n'existe pas pour un EID valide donné
 # - [ ] pouvoir enregistrer l'année de naissance d'un elf
-# - [.] calculer la clé de contrôle d'un elfe à la naissance
+# - [x] calculer la clé de contrôle d'un elfe à la naissance
 # - [x] introduire un repository
 
 

@@ -103,6 +103,7 @@ def test_increase_year_counter_when_register_elf():
     elves_set = ElvesSetInMemory()
     register_elf = ElfRegister(elves_set=elves_set)
     register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=84)
+    register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=85)
 
     # WHEN
     register_elf.execute(name="Pipounette", sex=Sex.Gagna, year_of_birth=84)

@@ -158,11 +158,18 @@ def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory,
 class ElfDoesNotExist(Exception):
     pass
 
+class EidNotValid(Exception):
+    pass
+
+
 
 def test_tell_when_elf_does_not_exist(elf_query: ElfQuery):
     # WHEN
     with pytest.raises(ElfDoesNotExist):
         elf_query.by_id("28400214")
+
+
+
 
 def test_tell_when_eid_is_not_valid(elf_query: ElfQuery):
     # WHEN

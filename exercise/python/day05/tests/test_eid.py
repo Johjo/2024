@@ -70,7 +70,7 @@ class ElfRegister:
 def test_register_when_elf_is_born(sex: Sex, year_of_birth: int,  name: str, expected_eid, ):
     # GIVEN
     elves_set = ElvesSetInMemory()
-    register_elf = ElfRegister()
+    register_elf = ElfRegister(elves_set=elves_set)
 
     # WHEN
     register_elf.execute()

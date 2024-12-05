@@ -40,18 +40,18 @@ class ElvesSetInMemory:
     def name_by_eid(self, eid: str) -> str:
         return self.elf_register[eid]
 
-@pytest.mark.parametrize("eid_prefix, name, eid", [
+@pytest.mark.parametrize("eid_prefix, name, expected_eid", [
     ("184001", "Pipon", "18400108"),
     ("185001", "Pipou", "18500175"),
-] )
-def test_register_when_elf_is_born(eid_prefix: str, name: str, eid: str,):
+])
+def test_register_when_elf_is_born(eid_prefix: str, name: str, expected_eid, ):
     # GIVEN
     elves_set = ElvesSetInMemory()
 
     # WHEN
-    elves_set.save(eid, name)
+    elves_set.save(expected_eid, name)
 
     # THEN
-    assert elves_set.name_by_eid(eid) == name
+    assert elves_set.name_by_eid(expected_eid) == name
 
 

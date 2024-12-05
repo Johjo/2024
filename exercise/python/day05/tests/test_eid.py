@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import Dict
 
 import pytest
@@ -40,16 +41,19 @@ class ElvesSetInMemory:
     def name_by_eid(self, eid: str) -> str:
         return self.elf_register[eid]
 
-@pytest.mark.parametrize("eid_prefix, name, expected_eid", [
-    (184001, "Pipon", "18400108"),
-    (185001, "Pipou", "18500175"),
+class Sex(Enum):
+    Sloubi = 1
+
+@pytest.mark.parametrize("sex, eid_other, name, expected_eid", [
+    (Sex.Sloubi, 184001, "Pipon", "18400108"),
+    (Sex.Sloubi, 185001, "Pipou", "18500175"),
 ])
-def test_register_when_elf_is_born(eid_prefix: int, name: str, expected_eid, ):
+def test_register_when_elf_is_born(sex: Sex, eid_other: int, name: str, expected_eid, ):
     # GIVEN
     elves_set = ElvesSetInMemory()
 
     # WHEN
-    eid = f"{eid_prefix}{str(control_key(eid_prefix)).zfill(2)}"
+    eid = f"{eid_other}{str(control_key(eid_other)).zfill(2)}"
     elves_set.save(eid, name)
 
     # THEN

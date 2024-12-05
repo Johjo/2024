@@ -14,7 +14,7 @@ from attr import dataclass
 # - [ ] dire si un elfe n'existe pas pour un EID valide donné
 # - [ ] pouvoir enregistrer l'année de naissance d'un elf
 # - [ ] calculer la clé de contrôle d'un elfe à la naissance
-# - [.] introduire un repository
+# - [x] introduire un repository
 
 
 
@@ -42,7 +42,7 @@ class ElvesSetInMemory:
 
 @pytest.mark.parametrize("eid, name", [
     ("18400108", "Pipon"),
-    ("185001", "Pipou"),
+    ("18500175", "Pipou"),
 ] )
 def test_register_when_elf_is_born(eid: str, name: str):
     # GIVEN

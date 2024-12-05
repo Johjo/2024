@@ -59,17 +59,13 @@ class ElvesSetInMemory:
         return self.elf_register[eid]
 
     def all(self) -> List[Elf]:
-        pass
+        return list(self.elf_register.values())
 
 
 class Sex(Enum):
     Sloubi = 1
     Gagna = 2
     Catact = 3
-
-
-
-
 
 
 class ElfRegister:

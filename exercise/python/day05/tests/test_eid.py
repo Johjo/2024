@@ -157,7 +157,7 @@ def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory,
     # WHEN
 
     # THEN
-    assert elf_query.by_id("28400214") == Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
+    assert elf_query.by_id(eid) == expected_elf
 
 
 class ElfDoesNotExist(Exception):

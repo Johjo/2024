@@ -77,7 +77,7 @@ class ElfRegister:
         if name == "Pipounette":
             year_count = len(all_elves) + 1
         else:
-            year_count = 1
+            year_count = len(all_elves) + 1
         eid_prefix = sex.value * 100000 + year_of_birth * 1000 + year_count
         eid = f"{eid_prefix}{str(control_key(eid_prefix)).zfill(2)}"
         self.elves_set.save(eid=eid, elf=Elf(name=name, year_of_birth=year_of_birth))

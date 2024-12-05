@@ -61,6 +61,9 @@ class ElvesSetInMemory:
     def all(self) -> List[Elf]:
         return list(self.elf_register.values())
 
+    def by_eid(self, eid: str) -> Elf:
+        pass
+
 
 class Sex(Enum):
     Sloubi = 1

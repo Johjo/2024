@@ -24,6 +24,7 @@ def control_key(eid_prefix: int) -> int:
 @pytest.mark.parametrize("eid_prefix, expected_key", [
     (198007, 67),
     (184001, 8),
+    (185001, 8),
 ])
 def test_control_key(eid_prefix, expected_key):
     assert control_key(eid_prefix) == expected_key

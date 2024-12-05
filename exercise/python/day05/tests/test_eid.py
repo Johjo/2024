@@ -87,6 +87,17 @@ class ElfRegister:
         return len([elf for elf in (self.elves_set.all()) if elf.year_of_birth == year_of_birth])
 
 
+@pytest.fixture
+def elves_set() -> ElvesSetInMemory:
+    return ElvesSetInMemory()
+
+
+@pytest.fixture
+def register_elf(elves_set: ElvesSetInMemory) -> ElfRegister:
+    return ElfRegister(elves_set=elves_set)
+
+
+
 @pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [
     (Sex.Sloubi, 1984,  "Pipon", "18400108"),
     (Sex.Sloubi, 1985, "Pipou", "18500175"),

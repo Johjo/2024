@@ -19,7 +19,7 @@ import pytest
 # - [x] introduire le sex Catact (3)
 # - [x] calculer la clé de contrôle d'un elfe à la naissance
 # - [x] introduire un repository
-# - [.] introduire le décompte des elfes par année
+# - [x] introduire le décompte des elfes par année
 # - [ ] Mettre l'année sur 4 digits
 # - [x] Sauvegarder l'année de naissance des elfes
 # - [x] Récupérer tous les elfes depuis le repository

@@ -73,7 +73,7 @@ def test_register_when_elf_is_born(sex: Sex, year_of_birth: int,  name: str, exp
     register_elf = ElfRegister(elves_set=elves_set)
 
     # WHEN
-    register_elf.execute()
+    register_elf.execute(name=name, sex=sex, year_of_birth=year_of_birth)
 
     # THEN
     assert elves_set.name_by_eid(expected_eid) == name

@@ -14,7 +14,7 @@ import pytest
 # - [ ] dire si un elfe n'existe pas pour un EID valide donné
 # - [ ] pouvoir enregistrer l'année de naissance d'un elf
 # - [x] pouvoir enregistrer le sex d'un elf
-# - [.] introduire le sex Gagna (2)
+# - [x] introduire le sex Gagna (2)
 # - [x] calculer la clé de contrôle d'un elfe à la naissance
 # - [x] introduire un repository
 

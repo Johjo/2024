@@ -50,13 +50,13 @@ class Elf:
 
 class ElvesSetInMemory:
     def __init__(self) -> None:
-        self.elf_register : Dict[str, str] = {}
+        self.elf_register : Dict[str, Elf] = {}
 
     def save(self, eid: str, elf: Elf):
-        self.elf_register[eid] = elf.name
+        self.elf_register[eid] = elf
 
     def name_by_eid(self, eid: str) -> str:
-        return self.elf_register[eid]
+        return self.elf_register[eid].name
 
     def all(self) -> List[Elf]:
         return list(self.elf_register.values())

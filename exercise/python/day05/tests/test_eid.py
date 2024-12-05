@@ -19,6 +19,7 @@ import pytest
 # - [x] calculer la clé de contrôle d'un elfe à la naissance
 # - [x] introduire un repository
 # - [.] introduire le décompte des elfes par année
+# - [ ] Mettre l'année sur 4 digits
 
 
 
@@ -79,5 +80,19 @@ def test_register_when_elf_is_born(sex: Sex, year_of_birth: int,  name: str, exp
 
     # THEN
     assert elves_set.name_by_eid(expected_eid) == name
+
+
+def test_increase_year_counter_when_register_elf():
+    # GIVEN
+    elves_set = ElvesSetInMemory()
+    register_elf = ElfRegister(elves_set=elves_set)
+    register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=84)
+
+    # WHEN
+    register_elf.execute(name="Pipounette", sex=Sex.Gagna, year_of_birth=84)
+
+    # THEN
+    assert elves_set.name_by_eid("00") == "Pipounette"
+
 
 

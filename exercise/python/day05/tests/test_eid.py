@@ -12,7 +12,7 @@ import pytest
 # - [ ] lister tous les elfes par nom et EID
 # - [ ] dire si un EID n'est pas valide pour un elfe
 # - [ ] dire si un elfe n'existe pas pour un EID valide donné
-# - [.] pouvoir enregistrer l'année de naissance d'un elf
+# - [x] pouvoir enregistrer l'année de naissance d'un elf
 # - [x] pouvoir enregistrer le sex d'un elf
 # - [x] introduire le sex Gagna (2)
 # - [x] introduire le sex Catact (3)
@@ -50,18 +50,18 @@ class Sex(Enum):
     Gagna = 2
     Catact = 3
 
-@pytest.mark.parametrize("sex, year_of_birth, eid_other, name, expected_eid", [
-    (Sex.Sloubi, 84, 84001, "Pipon", "18400108"),
-    (Sex.Sloubi, 85, 85001, "Pipou", "18500175"),
-    (Sex.Gagna, 86, 86001, "Pipette", "28600152"),
-    (Sex.Catact, 87, 87001, "Pipelette", "38700129"),
+@pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [
+    (Sex.Sloubi, 84,  "Pipon", "18400108"),
+    (Sex.Sloubi, 85, "Pipou", "18500175"),
+    (Sex.Gagna, 86,  "Pipette", "28600152"),
+    (Sex.Catact, 87, "Pipelette", "38700129"),
 ])
-def test_register_when_elf_is_born(sex: Sex, year_of_birth: int, eid_other: int, name: str, expected_eid, ):
+def test_register_when_elf_is_born(sex: Sex, year_of_birth: int,  name: str, expected_eid, ):
     # GIVEN
     elves_set = ElvesSetInMemory()
 
     # WHEN
-    eid_prefix = sex.value * 100000 + year_of_birth *1000 + 1
+    eid_prefix = sex.value * 100000 + year_of_birth * 1000 + 1
     eid = f"{eid_prefix}{str(control_key(eid_prefix)).zfill(2)}"
     elves_set.save(eid, name)
 

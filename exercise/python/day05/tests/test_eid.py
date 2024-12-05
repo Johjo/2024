@@ -12,6 +12,9 @@ import pytest
 # - [ ] dire si un elfe n'existe pas pour un EID valide donné
 
 
+def control_key(eid_prefix: int) -> int:
+    return 0
+
 
 def test_control_key():
     assert control_key(198007) == 67

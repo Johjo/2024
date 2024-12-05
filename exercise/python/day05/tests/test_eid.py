@@ -40,12 +40,16 @@ def control_key(eid_prefix: int) -> int:
 def test_control_key(eid_prefix, expected_key):
     assert control_key(eid_prefix) == expected_key
 
+@dataclass
+class Elf:
+    name: str
+
 
 class ElvesSetInMemory:
     def __init__(self) -> None:
         self.elf_register : Dict[str, str] = {}
 
-    def save(self, eid: str, elf_name: str):
+    def save(self, eid: str, elf_name: Elf):
         self.elf_register[eid] = elf_name
 
     def name_by_eid(self, eid: str) -> str:
@@ -57,9 +61,7 @@ class Sex(Enum):
     Catact = 3
 
 
-@dataclass
-class Elf:
-    name: str
+
 
 
 

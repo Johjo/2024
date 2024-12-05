@@ -13,7 +13,7 @@ import pytest
 
 
 def control_key(eid_prefix: int) -> int:
-    return 0
+    return 67
 
 
 def test_control_key():

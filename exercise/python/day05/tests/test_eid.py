@@ -1,4 +1,4 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List
@@ -82,7 +82,13 @@ class ElvesSetInMemory:
 
 
 class ElvesSetPort(ABC):
-    pass
+    @abstractmethod
+    def by_eid(self, eid: str) -> Elf:
+        pass
+
+    @abstractmethod
+    def all_by_eid(self) -> Dict[str, Elf]:
+        pass
 
 
 class ElfQuery:

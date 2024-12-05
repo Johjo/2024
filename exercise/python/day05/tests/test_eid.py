@@ -41,10 +41,10 @@ class ElvesSetInMemory:
         return self.elf_register[eid]
 
 @pytest.mark.parametrize("eid_prefix, name, expected_eid", [
-    ("184001", "Pipon", "18400108"),
-    ("185001", "Pipou", "18500175"),
+    (184001, "Pipon", "18400108"),
+    (185001, "Pipou", "18500175"),
 ])
-def test_register_when_elf_is_born(eid_prefix: str, name: str, expected_eid, ):
+def test_register_when_elf_is_born(eid_prefix: int, name: str, expected_eid, ):
     # GIVEN
     elves_set = ElvesSetInMemory()
 

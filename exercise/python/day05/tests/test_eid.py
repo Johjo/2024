@@ -37,7 +37,7 @@ class ElvesSetInMemory:
         self.elf_register["18400108"] = "Pipon"
 
     def name_by_eid(self, eid: str) -> str:
-        pass
+        return self.elf_register["18400108"]
 
 
 def test_register_when_elf_is_born():

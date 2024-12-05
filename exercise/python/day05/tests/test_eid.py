@@ -146,13 +146,15 @@ def test_increase_year_counter_when_register_elf(register_elf: ElfRegister, elve
 
 
 
-
-def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory, elf_query: ElfQuery):
+@pytest.mark.parametrize("eid, expected_elf", [
+    ("28400214", Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)),
+])
+def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory, elf_query: ElfQuery, eid: str, expected_elf:Elf):
     # GIVEN
     register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984)
+    register_elf.execute(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
 
     # WHEN
-    register_elf.execute(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
 
     # THEN
     assert elf_query.by_id("28400214") == Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)

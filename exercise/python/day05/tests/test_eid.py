@@ -1,6 +1,8 @@
 import unittest
 
 import pytest
+from attr import dataclass
+
 
 #### Test list
 # - [.] enregistrer la naissance d'un nouvel elfe
@@ -37,6 +39,7 @@ def test_register_when_elf_is_born():
     elves_set = ElvesSetInMemory()
 
     # WHEN
+    elves_set.save("18400108", "Pipon")
     elves_set.elf_register["18400108"] = "Pipon"
 
     # THEN

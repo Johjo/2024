@@ -19,6 +19,6 @@ def control_key(eid_prefix: int) -> int:
     (198007, 67)
 ])
 def test_control_key(eid_prefix, expected_key):
-    assert control_key(198007) == 67
+    assert control_key(eid_prefix) == expected_key
 
 

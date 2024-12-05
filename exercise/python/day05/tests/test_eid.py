@@ -1,9 +1,9 @@
-from abc import ABC, abstractmethod
-from dataclasses import dataclass
-from enum import Enum
 from typing import Dict, List
 
 import pytest
+
+from exercise.python.day05.tests.eid import control_key, Sex, Elf, ElvesSetPort, ElfQuery, ElfRegister, ElfDoesNotExist, \
+    EidNotValid
 
 
 #### Test list
@@ -29,12 +29,6 @@ import pytest
 # - [ ] Organiser les fichiers
 
 
-
-
-
-def control_key(eid_prefix: int) -> int:
-    return 97 - (eid_prefix % 97)
-
 @pytest.mark.parametrize("eid_prefix, expected_key", [
     (198007, 67),
     (184001, 8),
@@ -45,31 +39,6 @@ def control_key(eid_prefix: int) -> int:
 ])
 def test_control_key(eid_prefix, expected_key):
     assert control_key(eid_prefix) == expected_key
-
-class Sex(Enum):
-    Sloubi = 1
-    Gagna = 2
-    Catact = 3
-
-@dataclass(frozen=True)
-class Elf:
-    name: str
-    sex: Sex
-    year_of_birth: int
-
-
-class ElvesSetPort(ABC):
-    @abstractmethod
-    def by_eid(self, eid: str) -> Elf:
-        pass
-
-    @abstractmethod
-    def all_by_eid(self) -> Dict[str, Elf]:
-        pass
-
-    @abstractmethod
-    def save(self, eid: str, elf: Elf):
-        pass
 
 
 class ElvesSetInMemory(ElvesSetPort):
@@ -95,40 +64,6 @@ class ElvesSetInMemory(ElvesSetPort):
         return {**self.elf_register}
 
 
-
-
-class ElfQuery:
-    def __init__(self, elves_set: ElvesSetPort):
-        self.elves_set = elves_set
-
-    def by_id(self, eid: str) -> Elf:
-        if control_key(int(eid) // 100) != int(eid) % 100:
-            raise EidNotValid
-        return self.elves_set.by_eid(eid)
-
-    def all_by_eid(self) -> Dict[str, Elf]:
-        return self.elves_set.all_by_eid()
-
-
-class ElfRegister:
-    def __init__(self, elves_set: ElvesSetPort):
-        self.elves_set = elves_set
-
-    def execute(self, sex: Sex, year_of_birth: int,  name: str):
-        self.elves_set.save(
-                    eid=self.calculate_eid(sex, year_of_birth),
-                    elf=Elf(name=name, sex=sex, year_of_birth=year_of_birth))
-
-    def calculate_eid(self, sex, year_of_birth):
-        year_count = self._count_elves_by_year(year_of_birth) + 1
-        eid_prefix = sex.value * 100000 + (year_of_birth % 100) * 1000 + year_count
-        eid = f"{eid_prefix}{str(control_key(eid_prefix)).zfill(2)}"
-        return eid
-
-    def _count_elves_by_year(self, year_of_birth):
-        return len([elf for elf in (self.elves_set.all()) if elf.year_of_birth == year_of_birth])
-
-
 @pytest.fixture
 def elves_set() -> ElvesSetInMemory:
     return ElvesSetInMemory()
@@ -143,12 +78,12 @@ def elf_query(elves_set: ElvesSetInMemory) -> ElfQuery:
     return ElfQuery(elves_set=elves_set)
 
 @pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [
-    (Sex.Sloubi, 1984,  "Pipon", "18400108"),
+    (Sex.Sloubi, 1984, "Pipon", "18400108"),
     (Sex.Sloubi, 1985, "Pipou", "18500175"),
-    (Sex.Gagna, 1986,  "Pipette", "28600152"),
+    (Sex.Gagna, 1986, "Pipette", "28600152"),
     (Sex.Catact, 1987, "Pipelette", "38700129"),
 ])
-def test_register_when_elf_is_born(register_elf: ElfRegister, elves_set : ElvesSetInMemory, sex: Sex, year_of_birth: int,  name: str, expected_eid, ):
+def test_register_when_elf_is_born(register_elf: ElfRegister, elves_set : ElvesSetInMemory, sex: Sex, year_of_birth: int, name: str, expected_eid, ):
     # GIVEN
 
     # WHEN
@@ -175,7 +110,7 @@ def test_increase_year_counter_when_register_elf(register_elf: ElfRegister, elve
     ("28400214", Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)),
     ("18400108", Elf(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984)),
 ])
-def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory, elf_query: ElfQuery, eid: str, expected_elf:Elf):
+def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory, elf_query: ElfQuery, eid: str, expected_elf: Elf):
     # GIVEN
     register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984)
     register_elf.execute(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
@@ -184,14 +119,6 @@ def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory,
 
     # THEN
     assert elf_query.by_id(eid) == expected_elf
-
-
-class ElfDoesNotExist(Exception):
-    pass
-
-class EidNotValid(Exception):
-    pass
-
 
 
 def test_tell_when_elf_does_not_exist(elf_query: ElfQuery):

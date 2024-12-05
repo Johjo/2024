@@ -10,6 +10,9 @@ import pytest
 # - [ ] lister tous les elfes par nom et EID
 # - [ ] dire si un EID n'est pas valide pour un elfe
 # - [ ] dire si un elfe n'existe pas pour un EID valide donné
+# - [ ] pouvoir enregistrer l'année de naissance d'un elf
+# - [ ] calculer la clé de contrôle d'un elfe à la naissance
+# - [ ] introduire un repository
 
 
 def control_key(eid_prefix: int) -> int:

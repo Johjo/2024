@@ -1,8 +1,6 @@
-import unittest
+from typing import Dict
 
 import pytest
-from attr import dataclass
-from typing import Dict
 
 
 #### Test list

@@ -44,6 +44,7 @@ class ElvesSetInMemory:
 
 class Sex(Enum):
     Sloubi = 1
+    Gagna = 2
 
 @pytest.mark.parametrize("sex, eid_other, name, expected_eid", [
     (Sex.Sloubi, 84001, "Pipon", "18400108"),

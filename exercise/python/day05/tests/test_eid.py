@@ -13,7 +13,7 @@ import pytest
 # - [ ] dire si un EID n'est pas valide pour un elfe
 # - [ ] dire si un elfe n'existe pas pour un EID valide donné
 # - [ ] pouvoir enregistrer l'année de naissance d'un elf
-# - [ ] pouvoir enregistrer le sex d'un elf
+# - [.] pouvoir enregistrer le sex d'un elf
 # - [x] calculer la clé de contrôle d'un elfe à la naissance
 # - [x] introduire un repository
 
@@ -45,8 +45,8 @@ class Sex(Enum):
     Sloubi = 1
 
 @pytest.mark.parametrize("sex, eid_other, name, expected_eid", [
-    (Sex.Sloubi, 184001, "Pipon", "18400108"),
-    (Sex.Sloubi, 185001, "Pipou", "18500175"),
+    (Sex.Sloubi, 84001, "Pipon", "18400108"),
+    (Sex.Sloubi, 85001, "Pipou", "18500175"),
 ])
 def test_register_when_elf_is_born(sex: Sex, eid_other: int, name: str, expected_eid, ):
     # GIVEN

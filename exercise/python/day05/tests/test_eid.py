@@ -81,7 +81,7 @@ class ElvesSetInMemory:
 
 
 class ElfQuery:
-    def __init__(self, elves_set: ElvesSetInMemory):
+    def __init__(self, elves_set: ElvesSetPort):
         self.elves_set = elves_set
 
     def by_id(self, eid: str) -> Elf:
@@ -94,7 +94,7 @@ class ElfQuery:
 
 
 class ElfRegister:
-    def __init__(self, elves_set: ElvesSetInMemory):
+    def __init__(self, elves_set: ElvesSetPort):
         self.elves_set = elves_set
 
     def execute(self, sex: Sex, year_of_birth: int,  name: str):

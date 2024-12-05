@@ -54,7 +54,9 @@ class Sex(Enum):
 
 class ElfRegister:
     def execute(self):
-        pass
+        eid_prefix = sex.value * 100000 + year_of_birth * 1000 + 1
+        eid = f"{eid_prefix}{str(control_key(eid_prefix)).zfill(2)}"
+        elves_set.save(eid, name)
 
 
 @pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [

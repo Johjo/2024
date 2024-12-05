@@ -4,7 +4,7 @@ import pytest
 
 #### Test list
 # - [.] enregistrer la naissance d'un nouvel elfe
-# - [.] calculer à la main l'identifiant d'un premier elfe né en 1984 de sexe Sloubi 184001xx
+# - [x] calculer à la main l'identifiant d'un premier elfe né en 1984 de sexe Sloubi -> 18400108
 # - [x] créer une fonction permettant de calculer le complément d'un elfe
 # - [ ] identifier un elfe via son EID
 # - [ ] lister tous les elfes par nom et EID
@@ -21,5 +21,9 @@ def control_key(eid_prefix: int) -> int:
 ])
 def test_control_key(eid_prefix, expected_key):
     assert control_key(eid_prefix) == expected_key
+
+
+def test_register_when_elf_is_born():
+    pass
 
 

@@ -50,7 +50,7 @@ class Sex(Enum):
 @pytest.mark.parametrize("sex, eid_other, name, expected_eid", [
     (Sex.Sloubi, 84001, "Pipon", "18400108"),
     (Sex.Sloubi, 85001, "Pipou", "18500175"),
-    (Sex.Gagna, 86001, "Pipette", "28600100"),
+    (Sex.Gagna, 86001, "Pipette", "28600152"),
 ])
 def test_register_when_elf_is_born(sex: Sex, eid_other: int, name: str, expected_eid, ):
     # GIVEN

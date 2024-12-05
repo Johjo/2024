@@ -70,7 +70,6 @@ class ElvesSetInMemory:
 
     def by_eid(self, eid: str) -> Elf:
         try:
-            print(self.elf_register)
             return self.elf_register[eid]
         except KeyError:
             raise ElfDoesNotExist()

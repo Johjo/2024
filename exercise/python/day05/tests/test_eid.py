@@ -5,7 +5,7 @@ import pytest
 
 
 #### Test list
-# - [.] enregistrer la naissance d'un nouvel elfe
+# - [ ] enregistrer la naissance d'un nouvel elfe
 # - [x] calculer à la main l'identifiant d'un premier elfe né en 1984 de sexe Sloubi -> 18400108
 # - [x] créer une fonction permettant de calculer le complément d'un elfe
 # - [ ] identifier un elfe via son EID
@@ -18,6 +18,7 @@ import pytest
 # - [x] introduire le sex Catact (3)
 # - [x] calculer la clé de contrôle d'un elfe à la naissance
 # - [x] introduire un repository
+
 
 
 

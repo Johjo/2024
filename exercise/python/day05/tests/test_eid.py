@@ -104,10 +104,8 @@ def register_elf(elves_set: ElvesSetInMemory) -> ElfRegister:
     (Sex.Gagna, 1986,  "Pipette", "28600152"),
     (Sex.Catact, 1987, "Pipelette", "38700129"),
 ])
-def test_register_when_elf_is_born(sex: Sex, year_of_birth: int,  name: str, expected_eid, ):
+def test_register_when_elf_is_born(register_elf: ElfRegister, elves_set : ElvesSetInMemory, sex: Sex, year_of_birth: int,  name: str, expected_eid, ):
     # GIVEN
-    elves_set = ElvesSetInMemory()
-    register_elf = ElfRegister(elves_set=elves_set)
 
     # WHEN
     register_elf.execute(name=name, sex=sex, year_of_birth=year_of_birth)
@@ -116,10 +114,8 @@ def test_register_when_elf_is_born(sex: Sex, year_of_birth: int,  name: str, exp
     assert elves_set.name_by_eid(expected_eid) == name
 
 
-def test_increase_year_counter_when_register_elf():
+def test_increase_year_counter_when_register_elf(register_elf: ElfRegister, elves_set : ElvesSetInMemory):
     # GIVEN
-    elves_set = ElvesSetInMemory()
-    register_elf = ElfRegister(elves_set=elves_set)
     register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=1984)
     register_elf.execute(name="Pipon", sex=Sex.Sloubi, year_of_birth=1985)
 

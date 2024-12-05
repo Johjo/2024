@@ -21,8 +21,8 @@ import pytest
 # - [x] introduire un repository
 # - [ ] introduire le décompte des elfes par année
 # - [ ] Mettre l'année sur 4 digits
-# - [x] Sauvegarder l'année des elfes
-# - [.] Récupérer tous les elfes depuis le repository
+# - [.] Sauvegarder l'année de naissance des elfes
+# - [ ] Récupérer tous les elfes depuis le repository
 
 
 

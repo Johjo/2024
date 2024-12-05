@@ -35,10 +35,10 @@ class ElvesSetInMemory:
         self.elf_register = {}
 
     def save(self, eid: str, elf_name: str):
-        self.elf_register["18400108"] = "Pipon"
+        self.elf_register[eid] = elf_name
 
     def name_by_eid(self, eid: str) -> str:
-        return self.elf_register["18400108"]
+        return self.elf_register[eid]
 
 @pytest.mark.parametrize("eid, name", [
     ("18400108", "Pipon"),

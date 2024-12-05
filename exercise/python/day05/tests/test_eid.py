@@ -2,6 +2,7 @@ import unittest
 
 import pytest
 from attr import dataclass
+from typing import Dict
 
 
 #### Test list
@@ -13,6 +14,7 @@ from attr import dataclass
 # - [ ] dire si un EID n'est pas valide pour un elfe
 # - [ ] dire si un elfe n'existe pas pour un EID valide donné
 # - [ ] pouvoir enregistrer l'année de naissance d'un elf
+# - [ ] pouvoir enregistrer le sex d'un elf
 # - [x] calculer la clé de contrôle d'un elfe à la naissance
 # - [x] introduire un repository
 
@@ -32,7 +34,7 @@ def test_control_key(eid_prefix, expected_key):
 
 class ElvesSetInMemory:
     def __init__(self) -> None:
-        self.elf_register = {}
+        self.elf_register : Dict[str, str] = {}
 
     def save(self, eid: str, elf_name: str):
         self.elf_register[eid] = elf_name

@@ -79,8 +79,7 @@ class ElfRegister:
         self.elves_set.save(eid=eid, elf=Elf(name=name, year_of_birth=year_of_birth))
 
     def _count_elves_by_year(self, year_of_birth):
-        all_elves = self.elves_set.all()
-        return len([elf for elf in all_elves if elf.year_of_birth == year_of_birth])
+        return len([elf for elf in (self.elves_set.all()) if elf.year_of_birth == year_of_birth])
 
 
 @pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [

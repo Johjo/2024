@@ -26,8 +26,13 @@ def test_control_key(eid_prefix, expected_key):
     assert control_key(eid_prefix) == expected_key
 
 
+class ElvesSetInMemory:
+    pass
+
+
 def test_register_when_elf_is_born():
     # GIVEN
+    elves_set = ElvesSetInMemory()
     elf_register = {}
 
     # WHEN

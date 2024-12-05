@@ -1,8 +1,8 @@
+from dataclasses import dataclass
 from enum import Enum
 from typing import Dict
 
 import pytest
-from attr import dataclass
 
 
 #### Test list
@@ -40,7 +40,7 @@ def control_key(eid_prefix: int) -> int:
 def test_control_key(eid_prefix, expected_key):
     assert control_key(eid_prefix) == expected_key
 
-@dataclass
+@dataclass(frozen=True)
 class Elf:
     name: str
 
@@ -76,7 +76,7 @@ class ElfRegister:
             year_count = 1
         eid_prefix = sex.value * 100000 + year_of_birth * 1000 + year_count
         eid = f"{eid_prefix}{str(control_key(eid_prefix)).zfill(2)}"
-        self.elves_set.save(eid, Elf(name=name))
+        self.elves_set.save(eid=eid, elf=Elf(name=name))
 
 
 @pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [

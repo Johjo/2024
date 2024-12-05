@@ -73,6 +73,7 @@ class ElfRegister:
         self.elves_set = elves_set
 
     def execute(self, sex: Sex, year_of_birth: int,  name: str):
+        all_elves = self.elves_set.all()
         if name == "Pipounette":
             year_count = 2
         else:

@@ -11,7 +11,7 @@ import pytest
 # - [x] créer une fonction permettant de calculer le complément d'un elfe
 # - [x] identifier un elfe via son EID
 # - [ ] lister tous les elfes par nom et EID
-# - [ ] dire si un EID n'est pas valide pour un elfe
+# - [.] dire si un EID n'est pas valide pour un elfe
 # - [x] dire si un elfe n'existe pas pour un EID valide donné
 # - [x] pouvoir enregistrer l'année de naissance d'un elf
 # - [x] pouvoir enregistrer le sex d'un elf
@@ -74,6 +74,14 @@ class ElvesSetInMemory:
             raise ElfDoesNotExist()
 
 
+class ElfQuery:
+    def __init__(self, elves_set: ElvesSetInMemory):
+        self.elves_set = elves_set
+
+    def by_id(self, eid: str) -> Elf:
+        return self.elves_set.by_eid("28400214")
+
+
 class ElfRegister:
     def __init__(self, elves_set: ElvesSetInMemory):
         self.elves_set = elves_set
@@ -102,7 +110,9 @@ def elves_set() -> ElvesSetInMemory:
 def register_elf(elves_set: ElvesSetInMemory) -> ElfRegister:
     return ElfRegister(elves_set=elves_set)
 
-
+@pytest.fixture
+def elf_query(elves_set: ElvesSetInMemory) -> ElfQuery:
+    return ElfQuery(elves_set=elves_set)
 
 @pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [
     (Sex.Sloubi, 1984,  "Pipon", "18400108"),
@@ -132,12 +142,6 @@ def test_increase_year_counter_when_register_elf(register_elf: ElfRegister, elve
     assert elves_set.name_by_eid("28400214") == "Pipounette"
 
 
-class ElfQuery:
-    def __init__(self, elves_set: ElvesSetInMemory):
-        self.elves_set = elves_set
-
-    def by_id(self, eid: str) -> Elf:
-        return self.elves_set.by_eid("28400214")
 
 
 def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory):
@@ -156,15 +160,8 @@ class ElfDoesNotExist(Exception):
     pass
 
 
-def test_tell_when_elf_does_not_exist(register_elf: ElfRegister, elves_set : ElvesSetInMemory):
-    # GIVEN
-
+def test_tell_when_elf_does_not_exist(elf_query: ElfQuery):
     # WHEN
-
-    # THEN
     with pytest.raises(ElfDoesNotExist):
-        elf_query = ElfQuery(elves_set=elves_set)
-        assert elf_query.by_id("28400214") == Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
-
-
+        elf_query.by_id("28400214")
 

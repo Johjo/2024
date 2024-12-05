@@ -2,6 +2,7 @@ from enum import Enum
 from typing import Dict
 
 import pytest
+from attr import dataclass
 
 
 #### Test list
@@ -54,6 +55,12 @@ class Sex(Enum):
     Sloubi = 1
     Gagna = 2
     Catact = 3
+
+
+@dataclass
+class Elf:
+    name: str
+
 
 
 class ElfRegister:

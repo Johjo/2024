@@ -9,10 +9,10 @@ import pytest
 # - [x] enregistrer la naissance d'un nouvel elfe
 # - [x] calculer à la main l'identifiant d'un premier elfe né en 1984 de sexe Sloubi -> 18400108
 # - [x] créer une fonction permettant de calculer le complément d'un elfe
-# - [.] identifier un elfe via son EID
+# - [x] identifier un elfe via son EID
 # - [ ] lister tous les elfes par nom et EID
 # - [ ] dire si un EID n'est pas valide pour un elfe
-# - [ ] dire si un elfe n'existe pas pour un EID valide donné
+# - [.] dire si un elfe n'existe pas pour un EID valide donné
 # - [x] pouvoir enregistrer l'année de naissance d'un elf
 # - [x] pouvoir enregistrer le sex d'un elf
 # - [x] introduire le sex Gagna (2)
@@ -147,6 +147,16 @@ def test_get_elf_by_eid(register_elf: ElfRegister, elves_set : ElvesSetInMemory)
     # THEN
     elf_query = ElfQuery(elves_set=elves_set)
     assert elf_query.by_id("28400214") == Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
+
+def test_tell_when_elf_does_not_exist(register_elf: ElfRegister, elves_set : ElvesSetInMemory):
+    # GIVEN
+
+    # WHEN
+
+    # THEN
+    with pytest.raises(ElfDoesNotExist(eid="28400214")):
+        elf_query = ElfQuery(elves_set=elves_set)
+        assert elf_query.by_id("28400214") == Elf(name="Pipounette", sex=Sex.Gagna, year_of_birth=1984)
 
 
 

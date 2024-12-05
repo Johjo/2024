@@ -73,8 +73,7 @@ class ElfRegister:
         self.elves_set = elves_set
 
     def execute(self, sex: Sex, year_of_birth: int,  name: str):
-        year_count_elves_for_year = self._count_elves_by_yeatr(year_of_birth)
-        year_count = year_count_elves_for_year + 1
+        year_count = self._count_elves_by_yeatr(year_of_birth) + 1
         eid_prefix = sex.value * 100000 + year_of_birth * 1000 + year_count
         eid = f"{eid_prefix}{str(control_key(eid_prefix)).zfill(2)}"
         self.elves_set.save(eid=eid, elf=Elf(name=name, year_of_birth=year_of_birth))

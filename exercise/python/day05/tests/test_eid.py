@@ -50,13 +50,13 @@ class Sex(Enum):
     Gagna = 2
     Catact = 3
 
-@pytest.mark.parametrize("sex, eid_other, name, expected_eid", [
-    (Sex.Sloubi, 84001, "Pipon", "18400108"),
-    (Sex.Sloubi, 85001, "Pipou", "18500175"),
-    (Sex.Gagna, 86001, "Pipette", "28600152"),
-    (Sex.Catact, 87001, "Pipelette", "38700129"),
+@pytest.mark.parametrize("sex, year_of_birth, eid_other, name, expected_eid", [
+    (Sex.Sloubi, 84, 84001, "Pipon", "18400108"),
+    (Sex.Sloubi, 85, 85001, "Pipou", "18500175"),
+    (Sex.Gagna, 86, 86001, "Pipette", "28600152"),
+    (Sex.Catact, 87, 87001, "Pipelette", "38700129"),
 ])
-def test_register_when_elf_is_born(sex: Sex, eid_other: int, name: str, expected_eid, ):
+def test_register_when_elf_is_born(sex: Sex, year_of_birth: int, eid_other: int, name: str, expected_eid, ):
     # GIVEN
     elves_set = ElvesSetInMemory()
 

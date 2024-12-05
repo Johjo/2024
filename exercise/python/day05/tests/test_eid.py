@@ -80,8 +80,7 @@ class ElfRegister:
 
     def _count_elves_by_year(self, year_of_birth):
         all_elves = self.elves_set.all()
-        year_count_elves_for_year = len([elf for elf in all_elves if elf.year_of_birth == year_of_birth])
-        return year_count_elves_for_year
+        return len([elf for elf in all_elves if elf.year_of_birth == year_of_birth])
 
 
 @pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [

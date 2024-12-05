@@ -67,6 +67,9 @@ class ElvesSetPort(ABC):
     def all_by_eid(self) -> Dict[str, Elf]:
         pass
 
+    def save(self, eid: str, elf: Elf):
+        pass
+
 
 class ElvesSetInMemory(ElvesSetPort):
     def __init__(self) -> None:

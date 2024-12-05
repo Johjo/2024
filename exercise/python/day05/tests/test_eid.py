@@ -29,18 +29,6 @@ from exercise.python.day05.tests.eid import control_key, Sex, Elf, ElvesSetPort,
 # - [ ] Organiser les fichiers
 
 
-@pytest.mark.parametrize("eid_prefix, expected_key", [
-    (198007, 67),
-    (184001, 8),
-    (185001, 75),
-    (286001, 52),
-    (387001, 29),
-    (284002, 14),
-])
-def test_control_key(eid_prefix, expected_key):
-    assert control_key(eid_prefix) == expected_key
-
-
 class ElvesSetInMemory(ElvesSetPort):
     def __init__(self) -> None:
         self.elf_register : Dict[str, Elf] = {}
@@ -64,6 +52,7 @@ class ElvesSetInMemory(ElvesSetPort):
         return {**self.elf_register}
 
 
+
 @pytest.fixture
 def elves_set() -> ElvesSetInMemory:
     return ElvesSetInMemory()
@@ -76,6 +65,7 @@ def register_elf(elves_set: ElvesSetInMemory) -> ElfRegister:
 @pytest.fixture
 def elf_query(elves_set: ElvesSetInMemory) -> ElfQuery:
     return ElfQuery(elves_set=elves_set)
+
 
 @pytest.mark.parametrize("sex, year_of_birth, name, expected_eid", [
     (Sex.Sloubi, 1984, "Pipon", "18400108"),

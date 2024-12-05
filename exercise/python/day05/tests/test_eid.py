@@ -49,7 +49,7 @@ def test_register_when_elf_is_born(eid_prefix: int, name: str, expected_eid, ):
     elves_set = ElvesSetInMemory()
 
     # WHEN
-    eid = f"{eid_prefix}{control_key(eid_prefix)}"
+    eid = f"{eid_prefix}{str(control_key(eid_prefix)).zfill(2)}"
     elves_set.save(eid, name)
 
     # THEN
